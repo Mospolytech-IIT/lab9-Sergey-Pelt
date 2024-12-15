@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Посты</title>
+</head>
+<body>
+    <h1>Создать пост</h1>
+    <form method="post" action="/posts/create">
+        <input type="text" name="title" placeholder="Название" required />
+        <textarea name="content" placeholder="Содержание" required></textarea>
+        <select name="user_id" required>
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Создать пост</button>
+    </form>
+
+    <h1>Список постов</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content }}</p>
+                <p>Автор: {{ post.user.username }}</p>
+                <a href="/posts/edit/{{ post.id }}">Редактировать</a>
+                <a href="/posts/delete/{{ post.id }}">Удалить</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/users">Пользователи</a>
+</body>
+</html>
