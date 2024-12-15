@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактировать пост</title>
+</head>
+<body>
+    <h1>Редактировать пост</h1>
+    <form method="post">
+        <input type="text" name="title" value="{{ post.title }}" required />
+        <textarea name="content" required>{{ post.content }}</textarea>
+        <select name="user_id">
+            {% for user in users %}
+                <option value="{{ user.id }}" {% if user.id == post.user_id %}selected{% endif %}>{{ user.username }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</body>
+</html>

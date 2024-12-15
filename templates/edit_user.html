@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактировать пользователя</title>
+</head>
+<body>
+    <h1>Редактировать пользователя {{ user.username }}</h1>
+    <form method="post">
+        <input type="text" name="username" value="{{ user.username }}" required />
+        <input type="email" name="email" value="{{ user.email }}" required />
+        <input type="password" name="password" placeholder="Новый пароль" required />
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>
